@@ -19,5 +19,9 @@
   "devDependencies": {
     "@faker-js/faker": "^7.3.0",
     "dotenv": "^16.0.1"
+  },
+  "dependencies": {
+    "inquirer": "^9.1.0",
+    "mysql2": "^2.3.3"
   }
 }
