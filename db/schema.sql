@@ -3,7 +3,7 @@ CREATE SCHEMA `employees_db`;
 
 USE `employees_db`;
 
-CREATE TABLE `deprtments` (
+CREATE TABLE `departments` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(30) NOT NULL,
   PRIMARY KEY (`id`));
@@ -17,7 +17,7 @@ CREATE TABLE `roles` (
   INDEX `fk_roles_1_idx` (`department_id` ASC) VISIBLE,
   CONSTRAINT `fk_roles_1`
     FOREIGN KEY (`department_id`)
-    REFERENCES `deprtments` (`id`)
+    REFERENCES `departments` (`id`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION);
 
