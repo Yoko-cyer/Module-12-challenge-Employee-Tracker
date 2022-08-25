@@ -1,7 +1,10 @@
 const inquirer = require('inquirer');
-// const mysql = require('mysql2');
+const mysql = require('mysql2');
 const { getDepartments, addDepartment } = require('./operations/department');
-const { getRoles } = require('./operations/role');
+const { getRoles, addRole } = require('./operations/role');
+const { getEmployees, addEmployee } = require('./operations/employee');
+
+console.log("PID: ", process.pid)
 
 function main(){
 
@@ -13,6 +16,7 @@ function main(){
       choices: [
         'view all departments',
         'view all roles',
+        'view all employees',
         'add a department',
         'add a role',
         'add an employee',
@@ -63,27 +67,28 @@ function main(){
         console.table(departments);
         break;
         
-        
       case "view all roles":
         const roles = await getRoles();
         console.table(roles);
         break;
           
       case "view all employees":
-            
+        const employees = await getEmployees();
+        console.table(employees);
         break;
+
       case "add a department":
-        const department = await addDepartment();
+        const department = await addDepartment(ans.department_name);
         console.table(department);
         break;
       
       case "add a role":
-        const role = await addRole();
+        const role = await addRole(ans.department_role);
         console.table(role);
         break;
 
       case "add an employee":
-        const employee = await addEmployee();
+        const employee = await addEmployee(ans.employee_name);
         console.table(employee);
         break;
 

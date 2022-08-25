@@ -1,5 +1,5 @@
 try{
-  require('dotenv').config();  
+  require('dotenv').config();
 }catch(err){
   console.log(err);
 }
@@ -9,12 +9,12 @@ const mysql = require('mysql2/promise');
 function connect(){
 
   return mysql.createConnection({
-    host:process.env.DB_HOST,
-    port:3006,
-    user:process.env.DB_USER,
-    password:process.env.DB_PASSWORD,
-    database: "employees_db"
+    host: process.env.DB_HOST,
+    password: process.env.DB_PASSWORD,
+    user: process.env.DB_USER,
+    database: 'employees_db',
   })
+
 }
 
-module.exports = { connect };
+module.exports = {connect};

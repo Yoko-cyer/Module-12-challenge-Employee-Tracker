@@ -1,14 +1,17 @@
 const { connect } = require("../db/connection");
 
-async function addRole(name) {
+async function addRole(title, salary, department_id) {
   const db = await connect();
-  await db.query('INSERT INTO `employees_db`.`employees` (`id`, `first_name`, `last_name`, `role_id`, `manager_id`) VALUES (?);', name)
-
- 
+  const rolesInputs = [title, salary, department_id];
+  await db.query('INSERT INTO `employees_db`.`roles` (`title`, `salary`, `department_id`) VALUES (?,?,?)',
+  rolesInputs);
 }
+
 async function getRoles() {
   const db = await connect();
-  const [roles] = db.query('SELECT * FROM employees_db.roles;');
+  const [roles] = await db.query('SELECT * FROM roles;');
+
+  // console.log("Roles: ", roles)
 
   return roles; 
 }
